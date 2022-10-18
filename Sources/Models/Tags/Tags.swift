@@ -151,7 +151,6 @@ public class EXT_X_STREAM_INF: BaseAttributedTag, MultilineTag {
     override public class var tag: String { return "#EXT-X-STREAM-INF:" }
     
     static let bandwidthAttributeKey = "BANDWIDTH"
-    static let resolutionAttributeKey = "RESOLUTION"
     static let audioAttributeKey = "AUDIO"
     static let programIdAttributeKey = "PROGRAM-ID"
     
@@ -160,10 +159,7 @@ public class EXT_X_STREAM_INF: BaseAttributedTag, MultilineTag {
     public var bandwidth: Int {
         return Int(self.attributes[EXT_X_STREAM_INF.bandwidthAttributeKey] ?? " ") ?? -1
     }
-    
-    public var resolution: String {
-        return self.attributes[EXT_X_STREAM_INF.resolutionAttributeKey] ?? ""
-    }
+
     
     public var audio: String? {
         return self.attributes[EXT_X_STREAM_INF.audioAttributeKey]
@@ -179,8 +175,7 @@ public class EXT_X_STREAM_INF: BaseAttributedTag, MultilineTag {
             TagParamsKeys.attributesSeperator: ",",
             TagParamsKeys.attributesExtrasToRemove: ["\""],
             TagParamsKeys.attributesKeys: [
-                EXT_X_STREAM_INF.bandwidthAttributeKey,
-                EXT_X_STREAM_INF.resolutionAttributeKey
+                EXT_X_STREAM_INF.bandwidthAttributeKey
             ]
         ]
         let multiline = text.components(separatedBy: .newlines)
